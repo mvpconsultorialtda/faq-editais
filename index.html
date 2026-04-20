@@ -1,448 +1,519 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="FAQ: Consultoria para elaboração de projetos e editais FAPESB" />
-    <title>FAQ - Consultoria para Editais FAPESB</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="FAQ - Captadores MVP Consultoria: tudo sobre editais, programa de captacao e parcerias."/>
+  <title>FAQ Captadores — MVP Consultoria</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0056b3;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #212529;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --header-h: 64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-padding-top: calc(var(--header-h) + 16px); }
+    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; background: var(--bg); color: var(--text); padding-top: var(--header-h); }
     
-    <style>
-      :root {
-        --color-primary: #0056b3;
-        --color-bg: #f8f9fa;
-        --color-card-bg: #ffffff;
-        --color-text: #212529;
-        --color-text-light: #6c757d;
-        --color-border: #dee2e6;
-        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        --header-height: 65px; /* Altura do header para referência */
-      }
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); background: var(--card); border-bottom: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,.06); z-index: 1000; display: flex; align-items: center; }
+    .header .wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .brand { font-weight: 700; color: var(--primary); font-size: 1.1rem; text-decoration: none; }
+    .header-link { color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 600; }
+    .header-link:hover { color: var(--primary); }
 
-      /* Adicionado para que os links de âncora rolem para a posição correta */
-      html {
-        scroll-padding-top: var(--header-height);
-      }
+    /* Sidebar + main layout */
+    .layout { max-width: 960px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 220px 1fr; gap: 32px; }
+    @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
 
-      body {
-        font-family: var(--font-family);
-        line-height: 1.6;
-        margin: 0;
-        background-color: var(--color-bg);
-        color: var(--color-text);
-        /* Adicionado para não deixar o conteúdo começar por baixo do header fixo */
-        padding-top: var(--header-height);
-      }
+    .sidebar { position: sticky; top: calc(var(--header-h) + 24px); height: fit-content; }
+    .sidebar h3 { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; }
+    .sidebar a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 500; margin-bottom: 2px; transition: all .15s; }
+    .sidebar a:hover, .sidebar a.active { background: #e8f0fe; color: var(--primary); }
 
-      .wrap {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #0056b3 0%, #003d82 100%); color: #fff; border-radius: 16px; padding: 40px 32px; margin-bottom: 32px; }
+    .hero h1 { margin: 0 0 8px; font-size: 1.6rem; }
+    .hero p { margin: 0; opacity: .85; font-size: .95rem; }
+    .badge { display: inline-block; background: rgba(255,255,255,.2); border-radius: 20px; padding: 4px 12px; font-size: .8rem; font-weight: 600; margin-bottom: 16px; }
 
-      /* --- ESTILO DO HEADER MODIFICADO --- */
-      .site-header {
-        background-color: var(--color-card-bg);
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--color-border);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        
-        /* Adicionado para fixar no topo */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000; /* Garante que o header fique na frente de outros elementos */
-        box-sizing: border-box; /* Garante que o padding não aumente a largura total */
-      }
-      
-      .site-header .wrap {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: calc(var(--header-height) - 2rem); /* Calcula a altura interna */
-      }
-      
-      .brand {
-        font-weight: 700;
-        color: var(--color-primary);
-        font-size: 1.2rem;
-      }
-      
-      .nav a {
-        margin-left: 1.5rem;
-        text-decoration: none;
-        color: var(--color-text-light);
-        font-weight: 600;
-        transition: color 0.2s;
-      }
-      
-      .nav a:hover {
-        color: var(--color-primary);
-      }
+    /* Categories */
+    .cat-section { margin-bottom: 40px; }
+    .cat-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin: 0 0 16px; }
 
-      .main-card {
-        background-color: var(--color-card-bg);
-        padding: 30px 40px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        margin-top: 40px;
-        margin-bottom: 40px;
-      }
+    /* FAQ Items */
+    .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 16px 20px; font-size: .95rem; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; line-height: 1.4; transition: background .15s; }
+    .faq-q:hover { background: #f0f4ff; }
+    .faq-q .icon { font-size: 1.2rem; color: var(--primary); flex-shrink: 0; transition: transform .2s; }
+    .faq-q.open .icon { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 20px 16px; color: var(--muted); font-size: .9rem; line-height: 1.7; border-top: 1px solid var(--border); }
+    .faq-a p { margin: 12px 0 0; }
+    .faq-a.show { display: block; }
 
-      .title {
-        color: #003366;
-        text-align: center;
-        border-bottom: 2px solid var(--color-border);
-        padding-bottom: 15px;
-        margin-top: 0;
-        margin-bottom: 15px;
-      }
-      
-      .lead {
-        text-align: center;
-        color: var(--color-text-light);
-        font-size: 1.1rem;
-        margin-bottom: 30px;
-      }
+    /* Footer */
+    .footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); margin-top: 32px; }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="/">FAQ — MVP Consultoria</a>
+    <a class="header-link" href="/ciencia-na-mesa">Ciencia na Mesa →</a>
+  </div>
+</header>
 
-      .search-wrap {
-        margin-bottom: 30px;
-      }
+<div class="layout">
+  <aside class="sidebar">
+    <h3>Categorias</h3>
+    <a href="#cat-0">Sobre a MVP Consultoria</a>
+<a href="#cat-1">Processo de Trabalho com Proponentes</a>
+<a href="#cat-2">Trabalho do Captador</a>
+<a href="#cat-3">Edital 1: FAPESB/SECTI N� 003/2026 - Seguran�a P�blica</a>
+<a href="#cat-4">Edital 2: FAPESB/SECTI/IEL N� 004/2026 - Desafios Empresariais</a>
+<a href="#cat-5">Prazos Importantes para o Captador</a>
+<a href="#cat-6">Obje��es Comuns do Proponente e Respostas Sugeridas</a>
+  </aside>
 
-      #searchInput {
-        width: 100%;
-        padding: 12px 15px;
-        font-size: 16px;
-        border: 1px solid var(--color-border);
-        border-radius: 6px;
-        box-sizing: border-box;
-      }
+  <main>
+    <div class="hero">
+      <div class="badge">Briefing Comercial</div>
+      <h1>Programa de Captacao de Proponentes</h1>
+      <p>Tudo que voce precisa saber sobre editais, parceria com a MVP e como funciona o trabalho dos captadores.</p>
+    </div>
 
-      #searchInput:focus {
-        outline: none;
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
-      }
+    <section id="cat-0" class="cat-section">
+  <h2 class="cat-title">Sobre a MVP Consultoria</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que � a MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria � uma empresa baiana especializada na interse��o entre inova��o, pesquisa e editais p�blicos de fomento, focada em identificar oportunidades de financiamento e transform�-las em projetos aprovados.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � a especializa��o da MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria � especializada na elabora��o de projetos de Pesquisa, Desenvolvimento e Inova��o (P&amp;D&amp;I) sob medida para editais p�blicos, com o objetivo de garantir sua aprova��o.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Com quais ag�ncias de fomento a MVP Consultoria atua?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria atua com ag�ncias como FAPESB, CAPES, CNPq, SUDENE, FINEP e outras.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os servi�os pr�ticos oferecidos pela MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Na pr�tica, a MVP Consultoria monitora editais diariamente, elabora projetos completos (do objetivo geral ao or�amento, cronograma, metodologia e anexos), realiza a inscri��o nos portais das ag�ncias, interp�e recursos t�cnicos se o projeto n�o for aprovado de primeira, e gerencia projetos aprovados (presta��o de contas, relat�rios t�cnicos e financeiros, cumprimento de metas e prazos).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os resultados de aprova��o de projetos da MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria possui uma taxa de aprova��o superior a 70% nos editais em que submete propostas, enquanto a m�dia geral do mercado costuma ficar entre 20% e 30%.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Em quantas �reas tem�ticas a MVP Consultoria atua?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria atua em mais de 15 �reas tem�ticas, incluindo tecnologia da informa��o, intelig�ncia artificial, sa�de, educa��o, seguran�a p�blica, cultura, agroneg�cio, efici�ncia energ�tica, ind�stria 4.0, sustentabilidade, biotecnologia, comunica��o, jogos educacionais e inclus�o social.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">A MVP Consultoria elabora projetos do zero para cada edital?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o, a MVP Consultoria possui um portf�lio de projetos j� estruturados que s�o adaptados ao perfil, curr�culo e �rea de atua��o de cada proponente, garantindo personaliza��o e coer�ncia.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � a defini��o de inova��o para a MVP Consultoria e as ag�ncias de fomento?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Para a MVP Consultoria e as ag�ncias de fomento, inova��o � aplicar conhecimento de forma nova para resolver um problema real, e n�o necessariamente inventar algo revolucion�rio.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Pode dar exemplos concretos do que � inova��o para a MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Exemplos incluem: um sistema de IA para prever tend�ncias de criminalidade; um dispositivo de baixo custo para monitorar a qualidade da �gua em piscicultura; uma metodologia para cooperativas agr�colas migrarem para energia renov�vel; e um jogo digital que ensina nutri��o usando dados do Minist�rio da Sa�de.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como a MVP Consultoria � remunerada pelos seus servi�os?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A MVP Consultoria n�o cobra nada do proponente. Sua remunera��o prov�m de uma rubrica de &#x27;Servi�os de Terceiros&#x27; inclu�da no or�amento de qualquer projeto submetido e aprovado. O pagamento ocorre quando o projeto � outorgado (aprovado e contratado pela ag�ncia de fomento) e o recurso � repassado ao projeto.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O proponente precisa pagar a MVP Consultoria do pr�prio bolso?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o, o proponente n�o tira nada do pr�prio bolso; a remunera��o da MVP Consultoria vem do recurso aprovado no edital.</p></div>
+</div>
+</section>
+<section id="cat-1" class="cat-section">
+  <h2 class="cat-title">Processo de Trabalho com Proponentes</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Os projetos da MVP Consultoria s�o gen�ricos ou personalizados para o proponente?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Os projetos da MVP Consultoria n�o s�o gen�ricos; eles s�o adaptados ao perfil, curr�culo e �rea de atua��o do proponente, de forma que o proponente se reconhe�a no projeto e os avaliadores vejam coer�ncia entre a proposta e o coordenador.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Por que o proponente permaneceria com a MVP Consultoria se n�o h� contrato formal?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente mant�m total liberdade para decidir o que fazer ap�s a outorga. O diferencial da MVP Consultoria � a gest�o p�s-aprova��o (presta��o de contas, relat�rios, cumprimento de cronogramas, intera��o com a ag�ncia de fomento, adequa��o or�ament�ria), que � a parte mais desafiadora e onde a maioria dos pesquisadores se perde, evitando dores de cabe�a ao proponente.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o verdadeiro desafio na capta��o de projetos de fomento?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O verdadeiro desafio n�o � apenas ter um projeto ou se inscrever, mas sim a gest�o p�s-aprova��o, que inclui presta��o de contas t�cnica e financeira, relat�rios peri�dicos, cumprimento de cronograma e intera��o com a ag�ncia de fomento.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o ciclo de vida de um edital de fomento?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O ciclo de vida de um edital inclui as seguintes etapas: 1. Lan�amento; 2. Inscri��o; 3. Enquadramento; 4. An�lise de M�rito; 5. Resultado Preliminar; 6. Recurso Administrativo; 7. Resultado Final; 8. Outorga/Contrata��o; 9. Execu��o e Presta��o de Contas.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que o time da MVP Consultoria faz na etapa de inscri��o?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Na etapa de inscri��o, o time da MVP Consultoria submete a proposta com apoio do proponente, preenchendo o formul�rio online, projeto t�cnico, or�amento, cronograma e documenta��o exigidos.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � a responsabilidade da MVP Consultoria caso o projeto n�o seja aprovado de primeira?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Caso o projeto n�o seja aprovado de primeira, a MVP Consultoria analisa os pareceres e recorre tecnicamente, com hist�rico de reverter resultados nessa fase.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que a MVP Consultoria gerencia ap�s a aprova��o do projeto?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Ap�s a aprova��o, a MVP Consultoria gerencia a presta��o de contas, relat�rios t�cnicos e financeiros, o cumprimento de metas e os prazos com a ag�ncia de fomento.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando o proponente assina o Termo de Outorga?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente assina o Termo de Outorga com a ag�ncia ap�s o Resultado Final, marcando o in�cio dos repasses de bolsas e recursos financeiros.</p></div>
+</div>
+</section>
+<section id="cat-2" class="cat-section">
+  <h2 class="cat-title">Trabalho do Captador</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o papel do captador na MVP Consultoria?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O captador atua como o bra�o comercial da MVP Consultoria, com um trabalho de prospec��o ativa para buscar pessoas que se encaixem nos requisitos dos editais.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o as atividades pr�ticas que o captador deve realizar?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O captador deve: estudar os perfis de proponente dos editais, buscar pessoas em sua rede profissional (professores universit�rios, pesquisadores, profissionais de TI, engenheiros, mestres, doutores, profissionais com experi�ncia em P&amp;D), usar LinkedIn e outras redes, apresentar a proposta da MVP ao potencial proponente e coletar os dados e documentos necess�rios para enviar � MVP.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais tarefas o captador N�O precisa executar?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O captador N�O precisa: elaborar o projeto (feito pelo time da MVP), preencher formul�rios nos portais, entender tecnicamente cada edital em profundidade, e acompanhar o proponente ap�s a entrega da documenta��o (o time de relacionamento da MVP assume).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando o papel do captador se encerra no processo do edital?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O papel do captador se encerra ap�s a entrega da documenta��o do proponente. A partir desse ponto, o time de relacionamento da MVP assume a inscri��o, acompanhamento da avalia��o, recursos, contrata��o e execu��o do projeto.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como � calculada a remunera��o do captador?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A remunera��o do captador � baseada no valor alocado para &#x27;Servi�os de Terceiros&#x27; no projeto aprovado.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando o captador recebe sua comiss�o?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O pagamento da comiss�o acontece quando o projeto � outorgado, ou seja, quando a ag�ncia de fomento efetivamente repassa o recurso.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � a comiss�o para uma &#x27;Indica��o simples&#x27;?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A comiss�o para &#x27;Indica��o simples&#x27; � de 5% sobre o valor dos &#x27;Servi�os de Terceiros&#x27; alocados no projeto aprovado.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que a &#x27;Indica��o simples&#x27; inclui nas responsabilidades do captador?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Na &#x27;Indica��o simples&#x27;, o captador identifica o proponente, faz uma apresenta��o inicial e passa o contato para a MVP. O time da MVP conduz as reuni�es de convencimento e coleta a documenta��o.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � a comiss�o para uma &#x27;Capta��o completa&#x27;?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A comiss�o para &#x27;Capta��o completa&#x27; � de 10% sobre o valor dos &#x27;Servi�os de Terceiros&#x27; alocados no projeto aprovado.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que a &#x27;Capta��o completa&#x27; inclui nas responsabilidades do captador?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Na &#x27;Capta��o completa&#x27;, o captador realiza todas as etapas: prospec��o, reuni�es de convencimento, fechamento do proponente e coleta de todas as documenta��es e assinaturas necess�rias para que o time da MVP fa�a a inscri��o.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como funciona a comiss�o para proponentes que entram no &#x27;pool de proponentes&#x27; da MVP?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A comiss�o do captador � referente � aprova��o no primeiro edital ao qual aquele proponente � alocado. A MVP cuida do relacionamento de longo prazo e aloca os proponentes em editais futuros, permitindo que o captador foque em ampliar sua rede de prospec��o.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais informa��es m�nimas o captador precisa obter do proponente?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Independentemente do edital, o captador precisa obter: nome completo e CPF, Curr�culo Lattes atualizado (link ou PDF), login e senha do portal FAPESB, �rea de atua��o e experi�ncia profissional, confirma��o de resid�ncia na Bahia, informa��o sobre v�nculo empregat�cio e carga hor�ria semanal (se houver), contato (telefone/WhatsApp e e-mail), e documenta��es espec�ficas do edital.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O perfil do proponente precisa ser um &#x27;encaixe perfeito&#x27; com o edital?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o, o perfil do proponente n�o precisa ser &#x27;perfeito&#x27;. A MVP Consultoria possui experi�ncia em adaptar a narrativa do projeto para contemplar profissionais de �reas que, � primeira vista, n�o parecem se encaixar 100% no edital, desde que tenham mestrado/doutorado ou experi�ncia s�lida em P&amp;D&amp;I e demonstrem interesse.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos formais indispens�veis para um proponente?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Os requisitos formais m�nimos e indispens�veis s�o: forma��o exigida pelo edital (ex: mestrado/doutorado, se for o caso), Curr�culo Lattes ou Curr�culo Vitae atualizado, e cadastro ativo na FAPESB sem inadimpl�ncia.</p></div>
+</div>
+</section>
+<section id="cat-3" class="cat-section">
+  <h2 class="cat-title">Edital 1: FAPESB/SECTI N� 003/2026 - Seguran�a P�blica</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o t�tulo completo do Edital 1 e sua identifica��o?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O Edital 1 � o FAPESB/SECTI N� 003/2026 - Seguran�a P�blica.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o objetivo principal do Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O objetivo do Edital 1 � apoiar projetos de pesquisa e inova��o que apresentem solu��es concretas e aplic�veis para os desafios de seguran�a p�blica e defesa nacional no Estado da Bahia, buscando resultados que possam ser implementados de forma imediata e objetiva.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Que tipo de entregas s�o esperadas dos projetos do Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>S�o esperadas entregas concretas a cada quadrimestre, como tecnologias, sistemas e metodologias que as for�as de seguran�a e �rg�os de defesa possam usar na pr�tica.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o as modalidades de bolsas dispon�veis no Edital 1 e seus valores mensais?<span class="icon">+</span></button>
+  <div class="faq-a"><p>As modalidades s�o: DCT-A (R$ 5.200,00), DCT-B (R$ 3.900,00), ATP-A (R$ 1.100,00), ATP-B (R$ 800,00) e IC (R$ 700,00).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos de experi�ncia para as bolsas DCT-A e DCT-B no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Para DCT-A: 6+ anos de atua��o em P&amp;D&amp;I. Para DCT-B: 2+ anos de atua��o em P&amp;D&amp;I.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos para as bolsas ATP-A, ATP-B e IC no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Para ATP-A: N�vel m�dio com experi�ncia t�cnica. Para ATP-B: N�vel m�dio. Para IC: Graduando.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quem define a modalidade, valor e dura��o da bolsa para o proponente no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A modalidade, valor e dura��o da bolsa s�o definidos pela MVP Consultoria na elabora��o da proposta, em conjunto com o perfil do proponente e o or�amento planejado para o projeto.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual a forma��o acad�mica obrigat�ria para o proponente no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>� obrigat�rio que o proponente tenha forma��o de Mestre ou Doutor.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">� obrigat�rio ter v�nculo institucional para o proponente no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Sim, � obrigat�rio ter v�nculo permanente ou empregat�cio com uma Institui��o Cient�fica, Tecnol�gica e de Inova��o (ICT) localizada na Bahia.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Que tipo de experi�ncia � esperada do proponente no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente deve ter experi�ncia em coordena��o de projetos e produ��o cient�fica comprovada via Curr�culo Lattes.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual a dedica��o m�nima semanal exigida para o projeto no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A dedica��o m�nima exigida � de 8 horas semanais ao projeto.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos de cadastro na FAPESB para o proponente no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente n�o deve ter inadimpl�ncia e deve possuir cadastro ativo (login e senha) na FAPESB.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais tipos de institui��es s�o aceitas pelo Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O edital aceita ICTs (Institui��es Cient�ficas, Tecnol�gicas e de Inova��o) p�blicas ou privadas sem fins lucrativos, como institutos de pesquisa privados, funda��es e centros de inova��o, desde que desenvolvam atividade de pesquisa comprovada em seu estatuto ou regimento.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quem s�o os proponentes t�picos buscados para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Professores universit�rios (UFBA, UNEB, UEFS, UESC, UESB, IFBA, IFBAIANO, etc.) e pesquisadores de institutos como SENAI CIMATEC, Fiocruz Bahia, LNCC, ou qualquer ICT privada sem fins lucrativos com sede na Bahia, desde que sejam mestres ou doutores e tenham produ��o acad�mica.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Existe cota �tnico-racial no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Sim, 30% dos recursos s�o reservados para proponentes autodeclarados negros (pretos/pardos), com prioridade para mulheres negras.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como a parentalidade � considerada na avalia��o de proponentes mulheres no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Mulheres que comprovarem licen�a maternidade/adotante nos �ltimos 5 anos ganham +2 anos no prazo de avalia��o da produ��o do Curr�culo Lattes.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o as principais linhas tem�ticas (desafios) do Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>As linhas tem�ticas incluem: Desafio 1 - Tecnologias de Informa��o e Decis�o (IA, Big Data, rob�tica, criptografia, reconhecimento de padr�es); Desafio 2 - Sensores, Comunica��es e Guerra Eletr�nica (comunica��es avan�adas, sensores passivos/ativos, controle espectral); Desafio 3 - Materiais, Energia e Propuls�o (materiais avan�ados, nanotecnologia, comp�sitos, energia renov�vel).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">A �rea de atua��o do proponente precisa ser literalmente &#x27;seguran�a p�blica&#x27; no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o, a �rea do proponente n�o precisa ser literalmente &#x27;seguran�a p�blica&#x27;. Um matem�tico pode propor modelos de predi��o de criminalidade, ou um cientista da computa��o desenvolver IA para reconhecimento de padr�es, desde que a expertise se conecte com a solu��o proposta.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual documenta��o o captador deve coletar para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O captador deve coletar: Login e senha do portal FAPESB, Curr�culo Lattes (PDF), dados da Institui��o de v�nculo, dados pessoais completos (nome, CPF, e-mail, telefone), autodeclara��o cotista (se aplic�vel), informa��o sobre parentalidade (se aplic�vel).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quem � respons�vel pela coleta de assinaturas e documenta��o espec�fica no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Na &#x27;Capta��o completa&#x27; (10%), o captador � respons�vel. Na &#x27;Indica��o simples&#x27; (5%), o time da MVP Consultoria cuida diretamente da coleta com o proponente.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo para submiss�o do formul�rio online no portal FAPESB para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 24/04/2026 �s 17h.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo para envio da documenta��o por e-mail para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 30/04/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando � esperado o Resultado de Enquadramento para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 03/06/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o per�odo para An�lise de M�rito no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>De 10/06 a 10/08/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando � esperado o Resultado Preliminar para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>17/08/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o per�odo para Recurso Administrativo no Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>De 20/08 a 25/08/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando � esperado o Resultado Final para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>04/09/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando se inicia a Contrata��o/Outorga para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A partir de 20/10/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo final para o captador fechar um proponente para o Edital 1?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 23/04/2026, 24h antes do fechamento do formul�rio online (24/04).</p></div>
+</div>
+</section>
+<section id="cat-4" class="cat-section">
+  <h2 class="cat-title">Edital 2: FAPESB/SECTI/IEL N� 004/2026 - Desafios Empresariais</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o t�tulo completo do Edital 2 e sua identifica��o?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O Edital 2 � o FAPESB/SECTI/IEL N� 004/2026 - Desafios Empresariais.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o objetivo principal do Edital 2 e como ele se diferencia dos editais tradicionais?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O Edital 2 busca solucionar problemas concretos j� apresentados por empresas baianas reais (19 desafios pr�-aprovados), com a FAPESB financiando pesquisadores para resolv�-los. Diferente de editais acad�micos, aqui o problema j� est� definido, a empresa comprometida e o pesquisador trabalha diretamente com ela.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quantos desafios pr�-aprovados existem no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Existem 19 desafios pr�-aprovados, cada um vinculado a uma empresa espec�fica.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o as modalidades de bolsas dispon�veis no Edital 2 e seus valores mensais?<span class="icon">+</span></button>
+  <div class="faq-a"><p>As modalidades s�o: DCT-A (R$ 5.200,00) e DCT-B (R$ 3.900,00).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos de experi�ncia para as bolsas DCT-A e DCT-B no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Para DCT-A: 6+ anos de atua��o em P&amp;D&amp;I. Para DCT-B: 2+ anos de atua��o em P&amp;D&amp;I.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como a modalidade, valor e dura��o da bolsa s�o definidos no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A modalidade e o valor da bolsa s�o definidos de acordo com o enquadramento do proponente (forma��o e tempo de experi�ncia). A dura��o da bolsa � planejada conforme o cronograma de entrega da solu��o para a empresa.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O que acontece se o proponente no Edital 2 tiver v�nculo empregat�cio com carga hor�ria acima de 20h/semana?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Nesse caso, o proponente recebe 60% do valor da bolsa. Isso n�o impede a participa��o.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual a forma��o acad�mica m�nima para o proponente no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente deve ter n�vel superior completo, n�o sendo obrigat�rio mestrado ou doutorado.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual a experi�ncia m�nima exigida em P&amp;D&amp;I para o proponente no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>M�nimo de 2 anos em P&amp;D&amp;I, comprovados via Curr�culo Lattes nos �ltimos 5 anos.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">A resid�ncia no Estado da Bahia � um requisito para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Sim, � um requisito que o proponente resida no Estado da Bahia.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">� obrigat�rio ter v�nculo institucional para o proponente no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o � necess�rio. O proponente pode ser aut�nomo, CLT, servidor ou p�s-graduando.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quais s�o os requisitos de cadastro na FAPESB para o proponente no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O proponente n�o deve ter inadimpl�ncia e deve possuir cadastro ativo (login e senha) na FAPESB.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Que tipos de profissionais s�o buscados para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Profissionais de TI (desenvolvedores, cientistas de dados, engenheiros de software, analistas de sistemas), Engenheiros (de produ��o, el�trica, mec�nica, qu�mica, civil, materiais), Profissionais de agroneg�cio (agr�nomos, veterin�rios, bi�logos), Profissionais de sa�de (fisioterapeutas, farmac�uticos, biom�dicos), Pesquisadores independentes (consultores, aut�nomos) e P�s-graduandos (com anu�ncia do orientador e sem outra bolsa).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o ponto-chave para o Curr�culo Lattes do proponente no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O Curr�culo Lattes deve demonstrar atua��o em pesquisa, desenvolvimento ou inova��o nos �ltimos 5 anos, incluindo publica��o de artigos, participa��o em projetos, desenvolvimento de produtos ou processos, registro de software ou patente, ou consultoria t�cnica documentada.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">O captador precisa entender todos os 19 desafios empresariais do Edital 2 em detalhe?<span class="icon">+</span></button>
+  <div class="faq-a"><p>N�o, o captador n�o precisa dominar todos os desafios, basta ter uma no��o para identificar em qual �rea o proponente pode se encaixar, j� que cada desafio tem um v�deo pitch e descri��o detalhada no documento de refer�ncia.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Pode listar alguns dos desafios empresariais do Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Sim, alguns desafios incluem: Predi��o de criminalidade com IA (BX2 Tecnologia), Milho 360 � efici�ncia energ�tica (COPIREC�), Monitoramento remoto de qualidade da �gua (Clara Idea), Aditivo de prote��o solar agr�cola (Indeba), Previs�o de vendas e estoques com IA (Novabrink), Recupera��o de r�dio (Elekeiroz S/A), Sangue do Bem � doa��o de sangue (Solvum Tecnologia), VI.IA � mapeamento vi�rio (ADN Projetos), Automa��o de fabrica��o de sab�es (ISO Ind. de Sab�es), Gest�o inteligente de projetos (Gr�fico Empreendimentos), Automa��o de m�quina de fios/arames (Telamix), Transi��o para baixo carbono (MH2 Solu��es), Reparo met�lico com laser cladding (Turboserv Engenharia), Qualifica��o em manuten��o industrial (HITA Com�rcio), Monitoramento de eucalipto (Veracel Celulose), Espa�adores &#x27;Cocadinhas&#x27; em obras (Marcanti Pl�sticos), IA para energia inteligente (Ledax Energia), Inova Magistral (TMI Tecnologia), PhysioMetric (Atitude Postural).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual documenta��o o captador deve coletar para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O captador deve coletar: Login e senha do portal FAPESB, Curr�culo Lattes (link ou PDF) mostrando pelo menos 2 anos de P&amp;D&amp;I, comprovante de resid�ncia na Bahia, informa��o sobre v�nculo empregat�cio e carga hor�ria semanal (se houver), se p�s-graduando, informar que precisar� da anu�ncia do orientador/coordenador, dados pessoais completos, e �rea de interesse/desafio em que o proponente pode se encaixar.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo para submiss�o das propostas no portal para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 08/05/2026 �s 17h.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo para a documenta��o complementar para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 14/05/2026 �s 17h.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o per�odo de avalia��o para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>De 20/05 a 22/06/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando � esperado o Resultado Preliminar para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A partir de 03/07/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o per�odo para Recurso Administrativo no Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>De 13/07 a 17/07/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando � esperado o Resultado Final para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 30/07/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Quando se inicia a Contrata��o para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>A partir de 13/08/2026.</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual � o prazo final para o captador fechar um proponente para o Edital 2?<span class="icon">+</span></button>
+  <div class="faq-a"><p>At� 07/05/2026, 24h antes do fechamento da submiss�o (08/05).</p></div>
+</div>
+</section>
+<section id="cat-5" class="cat-section">
+  <h2 class="cat-title">Prazos Importantes para o Captador</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual o perfil buscado e os prazos para &#x27;Fechar proponente + docs b�sicos&#x27; e &#x27;Docs completos assinados para envio&#x27; para o Edital 003/2026 - Seguran�a P�blica?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O perfil buscado � Mestre/Doutor com v�nculo em ICT na Bahia. O prazo para &#x27;Fechar proponente + docs b�sicos&#x27; � 23/04/2026. O prazo para &#x27;Docs completos assinados para envio&#x27; � 29/04/2026 (envio at� 30/04).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Qual o perfil buscado e os prazos para &#x27;Fechar proponente + docs b�sicos&#x27; e &#x27;Docs completos assinados para envio&#x27; para o Edital 004/2026 - Desafios Empresariais?<span class="icon">+</span></button>
+  <div class="faq-a"><p>O perfil buscado � N�vel superior + 2 anos P&amp;D&amp;I, residente na Bahia. O prazo para &#x27;Fechar proponente + docs b�sicos&#x27; � 07/05/2026. O prazo para &#x27;Docs completos assinados para envio&#x27; � 13/05/2026 (envio at� 14/05).</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Os cronogramas dos editais podem sofrer altera��es?<span class="icon">+</span></button>
+  <div class="faq-a"><p>Sim, os cronogramas podem sofrer altera��es pela FAPESB (erratas). Caso ocorra, a MVP Consultoria informar� imediatamente.</p></div>
+</div>
+</section>
+<section id="cat-6" class="cat-section">
+  <h2 class="cat-title">Obje��es Comuns do Proponente e Respostas Sugeridas</h2>
+  <div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como responder � obje��o: &#x27;Como voc�s ganham com isso?&#x27;<span class="icon">+</span></button>
+  <div class="faq-a"><p>A resposta sugerida �: &#x27;Dentro do or�amento aprovado no edital existe uma rubrica de servi�os de terceiros. � por ali que somos remunerados, prestando consultoria de gest�o do projeto. Voc� n�o paga nada � tudo vem do recurso do edital.&#x27;</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como responder � obje��o: &#x27;Preciso assinar algum contrato?&#x27;<span class="icon">+</span></button>
+  <div class="faq-a"><p>A resposta sugerida �: &#x27;N�o. N�o temos contrato formal. Voc� tem liberdade total para decidir. Nosso diferencial � cuidar de toda a burocracia p�s-aprova��o, e � por isso que os proponentes ficam.&#x27;</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como responder � obje��o: &#x27;E se eu n�o for aprovado?&#x27;<span class="icon">+</span></button>
+  <div class="faq-a"><p>A resposta sugerida �: &#x27;Ningu�m paga nada. N�s investimos nosso tempo na elabora��o. Se n�o for aprovado, analisamos o parecer, tentamos recurso, e se necess�rio, tentamos em outro edital compat�vel com seu perfil.&#x27;</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como responder � obje��o: &#x27;Preciso escrever o projeto?&#x27;<span class="icon">+</span></button>
+  <div class="faq-a"><p>A resposta sugerida �: &#x27;N�o. N�s elaboramos tudo � metodologia, or�amento, cronograma, refer�ncias. Fazemos uma adapta��o ao seu curr�culo para que o projeto tenha a ver com a sua trajet�ria.&#x27;</p></div>
+</div>
+<div class="faq-item">
+  <button class="faq-q" onclick="toggle(this)">Como responder � obje��o: &#x27;Eu tenho emprego CLT, posso participar?&#x27;<span class="icon">+</span></button>
+  <div class="faq-a"><p>A resposta sugerida �: &#x27;Pode sim, dependendo do edital. Em alguns casos, quem tem v�nculo acima de 20h semanais recebe um percentual da bolsa. Nos passe seus dados que verificamos a melhor op��o.&#x27;</p></div>
+</div>
+</section>
+  </main>
+</div>
 
-      h2 {
-        color: var(--color-primary);
-        margin-top: 40px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid var(--color-border);
-      }
-      
-      section:first-of-type h2 {
-        margin-top: 0;
-      }
+<footer class="footer">
+  <p>MVP Consultoria em Tecnologia LTDA &mdash; <a href="/ciencia-na-mesa">Ciencia na Mesa</a></p>
+</footer>
 
-      /* --- Estilos do Accordion --- */
-      .faq-item {
-        margin-bottom: 10px;
-        border: 1px solid var(--color-border);
-        border-radius: 6px;
-        overflow: hidden;
-      }
+<script>
+function toggle(btn) {
+  btn.classList.toggle('open');
+  const ans = btn.nextElementSibling;
+  ans.classList.toggle('show');
+}
 
-      .faq-question {
-        background-color: #fdfdff;
-        padding: 15px 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0;
-        font-size: 1.1rem;
-      }
-
-      .faq-question::after {
-        content: '+';
-        font-size: 1.5rem;
-        color: var(--color-primary);
-        transition: transform 0.2s ease-in-out;
-      }
-      
-      .faq-item.active .faq-question::after {
-        content: '−';
-      }
-
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
-        padding: 0 20px;
-        background-color: var(--color-card-bg);
-      }
-
-      .faq-item.active .faq-answer {
-        max-height: 1500px;
-        padding: 15px 20px;
-      }
-      /* --- Fim dos Estilos do Accordion --- */
-
-      .no-results {
-        text-align: center;
-        padding: 20px;
-        font-style: italic;
-        color: var(--color-text-light);
-        display: none;
-      }
-
-      mark {
-        background-color: #fff3cd;
-        color: #5d4a14;
-        padding: 2px 3px;
-        border-radius: 3px;
-      }
-      
-      .site-footer {
-        text-align: center;
-        padding: 1.5rem 0;
-        color: var(--color-text-light);
-        font-size: 0.9rem;
-      }
-    </style>
-  </head>
-  <body>
-
-    <header class="site-header">
-      <div class="wrap">
-        <div class="brand">FAQ • Consultoria FAPESB</div>
-        <nav class="nav" aria-label="menu">
-          <a href="#for-proponent">Professor</a>
-          <a href="#for-capturer">Captador</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="wrap main-card">
-      <h1 class="title">Perguntas Frequentes</h1>
-      <p class="lead">Consultoria especializada em editais FAPESB na área de saúde, alimentação e tecnologia.</p>
-
-      <div id="search-container" class="search-wrap">
-        <input type="search" id="searchInput" placeholder="Pesquisar por palavra-chave..." aria-label="Pesquisar no FAQ">
-      </div>
-
-      <div id="faq-container">
-        <!-- SEÇÃO 1: INFORMAÇÕES PARA O PROFESSOR -->
-        <section id="for-proponent">
-          <h2>Seção 1: Informações para Apresentação ao Professor (Proponente)</h2>
-
-          <div class="faq-item">
-            <h3 class="faq-question">1. Qual é o objetivo principal do projeto?</h3>
-            <div class="faq-answer">
-              <p>O projeto consiste em uma iniciativa da FAPESB que visa educar a população sobre temas de saúde e alimentação de forma inovadora. O objetivo é desenvolver soluções, principalmente jogos digitais e físicos, que utilizem fontes de informação do governo do estado para transmitir conhecimento de maneira lúdica e acessível.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">2. Quais são as áreas de conhecimento que o edital abrange?</h3>
-            <div class="faq-answer">
-              <p>O edital é focado em propostas que integrem as áreas de <strong>Saúde, Alimentação e Nutrição</strong>. Além disso, projetos que envolvam <strong>Comunicação, Tecnologia e Inovação</strong>, como programação e desenvolvimento, são altamente relevantes para a execução das propostas.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <h3 class="faq-question">3. Que tipo de produtos são criados a partir dos projetos aprovados?</h3>
-            <div class="faq-answer">
-              <p>Os projetos executados resultam no desenvolvimento de jogos. Cada proposta geralmente inclui:</p>
-              <ul>
-                <li><strong>Um jogo digital:</strong> Que pode ser um aplicativo gamificado, um quiz online, um jogo no estilo de videogame ou uma versão digital de um jogo de tabuleiro.</li>
-                <li><strong>Um jogo físico:</strong> Que pode ser uma adaptação do jogo digital para o formato físico ou um jogo de tabuleiro completamente novo, com suas próprias regras e estrutura.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">4. Todos os professores recebem a mesma proposta de projeto?</h3>
-            <div class="faq-answer">
-              <p>Não. Cada professor é alinhado a uma <strong>ideia de projeto única e diferente</strong>. No entanto, todas as propostas seguem a mesma estrutura conceitual: um produto digital (jogo, app ou site gamificado) acompanhado de um produto físico (geralmente um jogo de tabuleiro).</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">5. Em que consiste a consultoria oferecida?</h3>
-            <div class="faq-answer">
-              <p>Oferecemos uma consultoria completa e gratuita para professores universitários interessados em submeter propostas ao edital. Nosso trabalho inclui:</p>
-              <ul>
-                <li>Apresentar uma ideia de projeto já validada e aderente ao edital.</li>
-                <li>Adaptar o escopo do projeto ao currículo Lattes do professor.</li>
-                <li>Construir a proposta completa, incluindo orçamento, cronograma e toda a documentação.</li>
-                <li>Submeter o projeto finalizado em nome do professor na plataforma da FAPESB.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <h3 class="faq-question">6. A consultoria é realmente gratuita? O que vocês ganham com isso?</h3>
-            <div class="faq-answer">
-              <p>Sim, a consultoria para a elaboração e submissão do projeto é <strong>100% gratuita</strong>. Nosso modelo de negócio se baseia na fase de execução: caso o projeto seja aprovado, apresentamos ao professor uma lista de empresas parceiras qualificadas para desenvolver o trabalho. Se o professor optar por contratar uma de nossas parceiras, nós continuamos gerenciando toda a parte burocrática do projeto.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">7. E se meu projeto for aprovado? Sou obrigado a contratar uma das empresas indicadas?</h3>
-            <div class="faq-answer">
-              <p>Não. Após a aprovação do projeto, a decisão é inteiramente sua. Você receberá uma lista de empresas qualificadas e poderá escolher uma delas ou seguir com outros fornecedores de sua preferência. A nossa gestão continuada do projeto está condicionada à escolha de um de nossos parceiros.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">8. Qual é exatamente o meu papel como professor após a aprovação, se eu fechar com uma de nossas empresas?</h3>
-            <div class="faq-answer">
-              <p>O seu papel será o de <strong>supervisor do processo</strong>. Você terá total visibilidade e poder de aprovação, mas sem a carga de trabalho operacional. Você poderá atuar de duas formas:</p>
-              <ol>
-                <li><strong>Ativamente:</strong> Demandando ações e relatórios específicos para a equipe de consultoria.</li>
-                <li><strong>Passivamente:</strong> Sendo informado sobre cada etapa do processo e apenas validando as entregas.</li>
-              </ol>
-              <p>Isso garante que você tenha segurança e controle, já que é o proponente oficial, enquanto nós cuidamos de toda a execução burocrática.</p>
-            </div>
-          </div>
-        </section>
-        
-        <!-- SEÇÃO 2: DIRETRIZES PARA O CAPTADOR -->
-        <section id="for-capturer">
-          <h2>Seção 2: Diretrizes Internas para o Captador</h2>
-          
-          <div class="faq-item">
-            <h3 class="faq-question">1. Qual é o perfil exato do professor que buscamos?</h3>
-            <div class="faq-answer">
-              <p>O proponente precisa atender a critérios específicos:</p>
-              <ul>
-                <!-- TEXTO ATUALIZADO AQUI -->
-                <li>Deve ser <strong>Mestre ou Doutor (PhD)</strong>.</li>
-                <li>Deve ser vinculado a uma <strong>universidade pública do Estado da Bahia</strong>.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <h3 class="faq-question">2. Se cadastrarmos vários professores, eles não competirão entre si?</h3>
-            <div class="faq-answer">
-              <p>Sim, haverá concorrência, e isso é parte da nossa estratégia para aumentar o volume de propostas de alta qualidade. A cota financeira total do edital é muito alta (na casa dos milhões), e historicamente temos uma taxa de aprovação elevada (entre 80% e 100%). Portanto, há espaço para aprovar múltiplos projetos, e a concorrência interna aumenta nossas chances gerais de sucesso.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <h3 class="faq-question">3. O trabalho do captador termina quando o professor aceita a parceria?</h3>
-            <div class="faq-answer">
-              <p><strong>Não.</strong> O trabalho do captador se estende para a fase de desenvolvimento da proposta. Após a captação, o fluxo é:</p>
-              <ol>
-                <li><strong>Fechamento da Parceria:</strong> É recomendável que a equipe de gestão (Júlia e/ou outros líderes) participe da conversa final para dar mais segurança ao professor.</li>
-                <li><strong>Desenvolvimento do Projeto:</strong> O captador utilizará nosso playbook e ferramentas (incluindo IA) para desenvolver o escopo completo do projeto. Esta parte do processo é projetada para ser ágil.</li>
-                <li><strong>Análise e Correção:</strong> O principal trabalho do captador nesta fase é ler, entender profundamente o projeto gerado, avaliá-lo como se fosse um parecerista do edital, e corrigir/melhorar o texto, garantindo coesão e qualidade.</li>
-              </ol>
-              <p>O objetivo é que o captador tenha tempo hábil para captar mais projetos, em vez de se aprofundar excessivamente na escrita de um único. Nosso modelo valoriza mais a <strong>captação de múltiplos professores</strong> do que a perfeição artesanal de uma única proposta.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item">
-            <h3 class="faq-question">4. Quando a captação é considerada um sucesso e como funciona o pagamento da comissão?</h3>
-            <div class="faq-answer">
-              <p>É fundamental diferenciar a definição de sucesso da condição de pagamento.</p>
-              <ul>
-                <li><strong>Definição de Sucesso:</strong> O sucesso da captação é oficializado quando o projeto é aprovado pela FAPESB e o professor assina o <strong>Termo de Outorga</strong>.</li>
-                <li><strong>Condição de Pagamento:</strong> No entanto, o pagamento da comissão ocorre em um momento posterior e está condicionado ao fluxo financeiro real do projeto. O gatilho para o pagamento é o seguinte:
-                  <ol>
-                    <li>O professor recebe a primeira parcela dos recursos da FAPESB.</li>
-                    <li>Ele efetua o primeiro pagamento (parcial ou total) à empresa de serviços contratada para executar o projeto.</li>
-                    <li>A comissão do captador é liberada assim que este pagamento é confirmado.</li>
-                  </ol>
-                </li>
-                <li><strong>Como funciona o pagamento proporcional:</strong> O pagamento da sua comissão é <strong>diretamente proporcional</strong> ao pagamento realizado para a empresa executora.
-                  <ul>
-                    <li><strong>Exemplo Prático:</strong>
-                      <ul>
-                        <li><strong>Projeto captado:</strong> R$ 300.000</li>
-                        <li><strong>Sua comissão (ex: 5%):</strong> R$ 15.000</li>
-                        <li>Se a empresa contratada recebe uma primeira parcela de <strong>60%</strong> do valor do serviço, você recebe imediatamente <strong>60%</strong> da sua comissão (R$ 9.000).</li>
-                        <li>Quando a empresa receber os <strong>40%</strong> restantes em uma segunda parcela, você recebe os <strong>40%</strong> restantes da sua comissão (R$ 6.000).</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><strong>Sua Responsabilidade:</strong> Isso significa que, mesmo após a aprovação, o captador deve <strong>acompanhar o andamento do projeto</strong> para garantir que os pagamentos ocorram. Se o projeto sofrer atrasos que impactem os repasses da FAPESB ao professor e, consequentemente, os pagamentos à empresa, o pagamento da sua comissão também será adiado.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="no-results" id="no-results-message">
-        <p>Nenhum resultado encontrado para a sua busca.</p>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="wrap">
-        <small>© Consultoria FAPESB — Conteúdo informativo.</small>
-      </div>
-    </footer>
-
-    <script>
-        const searchInput = document.getElementById('searchInput');
-        const faqContainer = document.getElementById('faq-container');
-        const faqItems = document.querySelectorAll('.faq-item');
-        const noResultsMessage = document.getElementById('no-results-message');
-
-        // Armazena o conteúdo original de forma mais detalhada para restauração
-        const originalContents = Array.from(faqItems).map(item => {
-            return {
-                question: item.querySelector('.faq-question').innerHTML,
-                answer: item.querySelector('.faq-answer').innerHTML
-            };
-        });
-
-        // Função do Accordion
-        faqContainer.addEventListener('click', (e) => {
-            const questionHeader = e.target.closest('.faq-question');
-            if (!questionHeader) return;
-
-            const faqItem = questionHeader.parentElement;
-            faqItem.classList.toggle('active');
-        });
-
-        function sanitizeForRegex(string) {
-            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
-
-        // Função da Busca
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.trim().toLowerCase();
-            let matchesFound = 0;
-
-            faqItems.forEach((item, index) => {
-                const questionEl = item.querySelector('.faq-question');
-                const answerEl = item.querySelector('.faq-answer');
-
-                // 1. Restaura o conteúdo original antes de cada busca
-                questionEl.innerHTML = originalContents[index].question;
-                answerEl.innerHTML = originalContents[index].answer;
-
-                const itemText = item.textContent.toLowerCase();
-                const isVisible = searchTerm.length === 0 || itemText.includes(searchTerm);
-
-                item.style.display = isVisible ? 'block' : 'none';
-
-                if (isVisible) {
-                    matchesFound++;
-                    if (searchTerm.length > 0) {
-                        item.classList.add('active'); // Expande o item se houver correspondência
-                        
-                        const regex = new RegExp(sanitizeForRegex(searchTerm), 'gi');
-                        
-                        // 2. Aplica o destaque no HTML restaurado
-                        questionEl.innerHTML = questionEl.innerHTML.replace(regex, match => `<mark>${match}</mark>`);
-                        answerEl.innerHTML = answerEl.innerHTML.replace(regex, match => `<mark>${match}</mark>`);
-                    } else {
-                        item.classList.remove('active'); // Contrai o item quando a busca é limpa
-                    }
-                }
-            });
-
-            noResultsMessage.style.display = matchesFound === 0 ? 'block' : 'none';
-        });
-    </script>
-
-  </body>
+// Sidebar active highlight on scroll
+const sections = document.querySelectorAll('.cat-section');
+const links = document.querySelectorAll('.sidebar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  links.forEach(l => {
+    l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
 </html>

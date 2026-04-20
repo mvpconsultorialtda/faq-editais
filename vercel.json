@@ -1,6 +1,13 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "ciencia-na-mesa/index.html", "use": "@vercel/static" },
+    { "src": "ciencia-na-mesa/styles.css", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/ciencia-na-mesa", "dest": "/ciencia-na-mesa/index.html" },
+    { "src": "/ciencia-na-mesa/(.*)", "dest": "/ciencia-na-mesa/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }

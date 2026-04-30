@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="MVP Consultoria — Parceria com Professores e Pesquisadores de ICTs. Captação de recursos federais, desenvolvimento tecnológico e gestão completa."/>
+  <title>Para Professores — MVP Consultoria</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0056b3;
+      --primary-dark: #003d82;
+      --primary-light: #e8f0fe;
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #212529;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --header-h: 64px;
+      --success: #198754;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-padding-top: calc(var(--header-h) + 20px); }
+    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; background: var(--bg); color: var(--text); padding-top: var(--header-h); }
+
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); background: var(--card); border-bottom: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,.06); z-index: 1000; display: flex; align-items: center; }
+    .header .wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .brand { font-weight: 700; color: var(--primary); font-size: 1.1rem; text-decoration: none; }
+    .header-nav { display: flex; gap: 20px; align-items: center; }
+    .header-link { color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 600; }
+    .header-link:hover { color: var(--primary); }
+    .header-cta { background: var(--primary); color: #fff; padding: 8px 18px; border-radius: 8px; font-size: .875rem; font-weight: 600; text-decoration: none; transition: background .15s; }
+    .header-cta:hover { background: var(--primary-dark); }
+
+    /* Layout */
+    .layout { max-width: 1040px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+    @media (max-width: 720px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: calc(var(--header-h) + 24px); height: fit-content; }
+    .sidebar h3 { font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+    .sidebar a { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 7px; color: var(--muted); text-decoration: none; font-size: .855rem; font-weight: 500; margin-bottom: 2px; transition: all .15s; }
+    .sidebar a:hover, .sidebar a.active { background: var(--primary-light); color: var(--primary); }
+    .sidebar .num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--primary); color: #fff; border-radius: 50%; font-size: .7rem; font-weight: 700; flex-shrink: 0; }
+    .sidebar a:hover .num, .sidebar a.active .num { background: var(--primary-dark); }
+    .sidebar-contact { margin-top: 24px; padding: 16px; background: var(--primary-light); border-radius: 10px; border: 1px solid #c8daf7; }
+    .sidebar-contact p { margin: 0 0 10px; font-size: .8rem; color: var(--text); font-weight: 600; }
+    .sidebar-contact a { background: var(--primary); color: #fff; padding: 9px 14px; border-radius: 8px; font-size: .82rem; font-weight: 600; text-decoration: none; display: block; text-align: center; }
+    .sidebar-contact a:hover { background: var(--primary-dark); }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; border-radius: 16px; padding: 44px 36px; margin-bottom: 36px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: rgba(255,255,255,.06); border-radius: 50%; }
+    .hero::after { content: ''; position: absolute; bottom: -40px; right: 80px; width: 140px; height: 140px; background: rgba(255,255,255,.04); border-radius: 50%; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,.2); border-radius: 20px; padding: 5px 14px; font-size: .8rem; font-weight: 600; margin-bottom: 16px; }
+    .hero h1 { margin: 0 0 12px; font-size: 1.85rem; font-weight: 800; line-height: 1.25; }
+    .hero p { margin: 0; opacity: .88; font-size: 1rem; line-height: 1.65; max-width: 580px; }
+    .hero-stats { display: flex; gap: 28px; margin-top: 28px; flex-wrap: wrap; }
+    .hero-stat { text-align: left; }
+    .hero-stat .val { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .hero-stat .lab { font-size: .78rem; opacity: .8; margin-top: 3px; }
+
+    /* Phase sections */
+    .phases { display: flex; flex-direction: column; gap: 20px; }
+    .phase-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .phase-header { display: flex; align-items: center; gap: 14px; padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .phase-num { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--primary); color: #fff; border-radius: 9px; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .phase-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    .phase-body { padding: 20px 22px; }
+    .phase-body p { margin: 0 0 14px; font-size: .935rem; color: #444; line-height: 1.7; }
+    .phase-body p:last-child { margin-bottom: 0; }
+
+    /* Nucleus cards */
+    .nuclei { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    @media (max-width: 600px) { .nuclei { grid-template-columns: 1fr; } }
+    .nucleus { background: var(--primary-light); border: 1px solid #c8daf7; border-radius: 10px; padding: 16px 18px; }
+    .nucleus-title { font-size: .82rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 8px; }
+    .nucleus p { margin: 0; font-size: .875rem; color: var(--text); line-height: 1.6; }
+
+    /* Bolsa info */
+    .bolsa-info { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: .875rem; color: #166534; line-height: 1.6; }
+    .bolsa-info strong { display: block; margin-bottom: 4px; color: #14532d; }
+
+    /* Stats bar */
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--primary-dark); border-radius: 12px; overflow: hidden; margin-top: 36px; }
+    @media (max-width: 600px) { .stats-bar { grid-template-columns: repeat(2, 1fr); } }
+    .stat { padding: 20px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+    .stat:last-child { border-right: none; }
+    .stat .val { font-size: 1.6rem; font-weight: 800; color: #fff; line-height: 1; }
+    .stat .lab { font-size: .75rem; color: rgba(255,255,255,.72); margin-top: 5px; line-height: 1.4; }
+
+    /* CTA section */
+    .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 14px; padding: 36px 32px; text-align: center; color: #fff; margin-top: 36px; }
+    .cta-section h2 { margin: 0 0 10px; font-size: 1.4rem; }
+    .cta-section p { margin: 0 0 22px; opacity: .88; font-size: .95rem; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--primary); padding: 12px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: .95rem; transition: all .15s; }
+    .cta-btn:hover { background: #f0f0f0; transform: translateY(-1px); }
+
+    /* Footer */
+    .footer { text-align: center; padding: 28px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); margin-top: 40px; max-width: 1040px; margin-left: auto; margin-right: auto; }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="/">MVP Consultoria</a>
+    <nav class="header-nav">
+      <a class="header-link" href="/">FAQ Captadores</a>
+      <a class="header-cta" href="mailto:mvpconsultorialtda@gmail.com">Entrar em contato</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h3>Fases</h3>
+    <a href="#fase-1"><span class="num">1</span> Identificação</a>
+    <a href="#fase-2"><span class="num">2</span> Proposta</a>
+    <a href="#fase-3"><span class="num">3</span> Submissão</a>
+    <a href="#fase-4"><span class="num">4</span> Aprovação</a>
+    <a href="#fase-5"><span class="num">5</span> Gestão</a>
+    <a href="#fase-6"><span class="num">6</span> Encerramento</a>
+
+    <div class="sidebar-contact">
+      <p>Tem interesse em parceria?</p>
+      <a href="mailto:mvpconsultorialtda@gmail.com">Fale conosco</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">Para Professores e Pesquisadores</div>
+      <h1>Captação de recursos federais com suporte completo</h1>
+      <p>A MVP cuida de todo o processo — da identificação do edital à prestação de contas final. O professor entra como representante acadêmico, recebe bolsa de pesquisa e tem suporte do início ao fim.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="val">~80%</div>
+          <div class="lab">taxa de aprovação</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">100%</div>
+          <div class="lab">back office pela MVP</div>
+        </div>
+        <div class="hero-stat">
+          <div class="val">0</div>
+          <div class="lab">burocracia para o professor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phases -->
+    <div class="phases">
+
+      <div class="phase-card" id="fase-1">
+        <div class="phase-header">
+          <div class="phase-num">1</div>
+          <div class="phase-title">Identificação e Captação</div>
+        </div>
+        <div class="phase-body">
+          <p>A MVP identifica editais públicos com potencial de captação de recursos federais para o estado da Bahia. A partir disso, desenvolvemos um projeto que é sempre o desenvolvimento de um produto — uma solução tecnológica que resolve uma problemática específica do edital.</p>
+        </div>
+      </div>
+
+      <div class="phase-card" id="fase-2">
+        <div class="phase-header">
+          <div class="phase-num">2</div>
+          <div class="phase-title">Proposta ao Professor</div>
+        </div>
+        <div class="phase-body">
+          <p>Buscamos professores de universidades públicas (ICTs) para serem pesquisadores representando nossa proposta. Escolhemos o projeto mais adequado e adaptamos o lattes do mesmo para haver um casamento.</p>
+          <p>O projeto é estruturado em dois núcleos:</p>
+          <div class="nuclei">
+            <div class="nucleus">
+              <div class="nucleus-title">Núcleo 1 — Desenvolvimento tecnológico</div>
+              <p>Uma solução tecnológica desenvolvida por uma empresa associada ao projeto.</p>
+            </div>
+            <div class="nucleus">
+              <div class="nucleus-title">Núcleo 2 — Documentação acadêmica</div>
+              <p>Um aluno de iniciação científica, orientado pelo professor, desenvolve uma documentação que registra de forma acadêmica os materiais repassados pela empresa no desenvolvimento do projeto. O professor pode direcionar como essa documentação será feita — se será apenas um registro ou se será desenvolvida como pesquisa. Essa documentação é propriedade do professor: pode ser incluída no relatório final à agência de fomento, ou desenvolvida como artigo a ser publicado.</p>
+            </div>
+          </div>
+          <div class="bolsa-info">
+            <strong>Bolsas de pesquisa incluídas</strong>
+            Para a execução das atividades, será destinada uma bolsa de pesquisa para o professor orientador, uma bolsa de pesquisa para o aluno de ICT, além de uma verba para o desenvolvimento da solução.
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-card" id="fase-3">
+        <div class="phase-header">
+          <div class="phase-num">3</div>
+          <div class="phase-title">Submissão</div>
+        </div>
+        <div class="phase-body">
+          <p>A MVP realiza a submissão completa da proposta junto à agência financiadora. A empresa surgiu como uma união de proponentes de editais — pessoas que viveram na prática os dois maiores desafios do processo: aprovar o projeto e, principalmente, executá-lo até o fim.</p>
+          <p>O edital enfrenta obstáculos tanto na escrita e aprovação quanto na entrega, seja na parte tecnológica ou na burocrática. Nos especializamos em resolver os dois lados, prestando serviços para empresas, profissionais de educação, empreendedores e pesquisadores.</p>
+          <p><strong>Nossa taxa de aprovação em projetos atualmente chega a 80% dos projetos submetidos.</strong></p>
+        </div>
+      </div>
+
+      <div class="phase-card" id="fase-4">
+        <div class="phase-header">
+          <div class="phase-num">4</div>
+          <div class="phase-title">Aprovação</div>
+        </div>
+        <div class="phase-body">
+          <p>Após a aprovação do projeto, a MVP cuida de toda a documentação junto à agência financiadora — resolve todas as dúvidas, tira os entraves burocráticos e apoia o professor em todo o processo de entrada, desde a emissão até a liberação da bolsa de pesquisa.</p>
+          <p>O professor não enfrenta esse processo sozinho em nenhum momento e resolvemos o processo por nossa conta.</p>
+        </div>
+      </div>
+
+      <div class="phase-card" id="fase-5">
+        <div class="phase-header">
+          <div class="phase-num">5</div>
+          <div class="phase-title">Gestão do Projeto</div>
+        </div>
+        <div class="phase-body">
+          <p>A MVP gerencia toda a execução do projeto: monitora, envia documentações, relatórios e materiais exigidos pelas agências, resolve pendências e repassa ao professor todas as informações que ele precisar ou desejar saber, incluindo a gestão do aluno orientando.</p>
+          <p>Atuamos como um escritório administrativo particular.</p>
+        </div>
+      </div>
+
+      <div class="phase-card" id="fase-6">
+        <div class="phase-header">
+          <div class="phase-num">6</div>
+          <div class="phase-title">Encerramento</div>
+        </div>
+        <div class="phase-body">
+          <p>Fazemos a prestação de contas, finalização formal e resolução de qualquer pendência com a agência financiadora, além da entrega da solução.</p>
+          <p>O professor tem todo o suporte do início ao final do projeto.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="val">~80%</div>
+        <div class="lab">Taxa de aprovação em editais</div>
+      </div>
+      <div class="stat">
+        <div class="val">100%</div>
+        <div class="lab">Back office pela MVP</div>
+      </div>
+      <div class="stat">
+        <div class="val">2</div>
+        <div class="lab">Bolsas incluídas (professor + aluno)</div>
+      </div>
+      <div class="stat">
+        <div class="val">6</div>
+        <div class="lab">Fases com suporte completo</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Tem interesse em ser nosso parceiro de pesquisa?</h2>
+      <p>Entre em contato e veja como podemos estruturar o projeto certo para o seu perfil.</p>
+      <a class="cta-btn" href="mailto:mvpconsultorialtda@gmail.com">Falar com a MVP</a>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  MVP Consultoria &nbsp;·&nbsp; <a href="mailto:mvpconsultorialtda@gmail.com">mvpconsultorialtda@gmail.com</a> &nbsp;·&nbsp; Salvador, Bahia
+</footer>
+
+<script>
+  // Active sidebar link on scroll
+  const links = document.querySelectorAll('.sidebar a[href^="#"]');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  function updateActive() {
+    let current = sections[0];
+    sections.forEach(s => { if (window.scrollY + 120 >= s.offsetTop) current = s; });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
+</body>
+</html>
